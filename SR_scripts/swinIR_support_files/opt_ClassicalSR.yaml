@@ -1,0 +1,80 @@
+
+dist: true
+find_unused_parameters: true
+gpu_ids:
+- 0
+is_train: true
+merge_bn: false
+merge_bn_startpoint: -1
+model: plain
+n_channels: 1
+netG: 
+    depths:
+    - 6
+    - 6
+    - 6
+    - 6
+    - 6
+    - 6
+    embed_dim: 180
+    img_range: 1.0
+    img_size: 32
+    in_chans: 1
+    init_type: default
+    mlp_ratio: 2
+    net_type: swinir
+    num_heads:
+    - 6
+    - 6
+    - 6
+    - 6
+    - 6
+    - 6
+    resi_connection: 1conv
+    scale: 1
+    upsampler: pixelshuffle
+    upscale: 1
+    window_size: 8
+num_gpu: 1
+opt_path: options/swinir/train_swinir_sr_realworld_x4_gan.json
+path: 
+    images: superresolution/swinir_sr_realworld_x4_gan/images
+    log: superresolution/swinir_sr_realworld_x4_gan
+    models: superresolution/swinir_sr_realworld_x4_gan/models
+    options: superresolution/swinir_sr_realworld_x4_gan/options
+    pretrained_netD: null
+    pretrained_netE: null
+    pretrained_netG: null
+    pretrained_optimizerG: null
+    pretrained_optimizerD: null
+    root: superresolution
+    task: superresolution/swinir_sr_realworld_x4_gan
+scale: 2
+task: swinir_sr_classical
+train:
+    E_decay: 0.999
+    E_param_strict: true
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_lr: 0.0002
+    G_optimizer_reuse: true
+    G_optimizer_type: adam
+    G_optimizer_wd: 0
+    G_param_strict: true
+    G_scheduler_gamma: 0.5
+    G_scheduler_milestones:
+    - 250000
+    - 400000
+    - 450000
+    - 475000
+    - 500000
+    G_scheduler_type: MultiStepLR
+    checkpoint_print: 200
+    checkpoint_save: 5000
+    checkpoint_test: 5000
+    G_optimizer_clipgrad: null
+    G_regularizer_orthstep: null
+    G_regularizer_clipstep: null
+world_size: 1
+
+
